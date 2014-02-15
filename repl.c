@@ -1,15 +1,10 @@
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
 void quit(){
   fprintf(stderr, "memory exhausted");
   exit(1);
 }
 
-int parse(){
+int repl(){
   int input;
   bool done = false;
   int buffer_size = 20;
