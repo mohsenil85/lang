@@ -13,7 +13,7 @@ void quit(){
 int repl(){
   int input;
   bool done = false;
-  int buffer_size = 20;
+  int buffer_size = 64;
   char* line = (char*) malloc(buffer_size);
   if (line == 0) quit();
 
