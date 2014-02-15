@@ -1,4 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
+#include "parse.h"
 void quit(){
   fprintf(stderr, "memory exhausted");
   exit(1);
@@ -32,10 +38,11 @@ int repl(){
         line[i] = 0;
         break;
       }
+      printf("now parsing this char:  %c\n", (char)input);
       line[i] = input;
       if (i == buffer_size - 1){
         buffer_size = buffer_size + buffer_size;
-        printf("buffer expanded!\n");
+        printf("*****************buffer expanded!***************\n");
         line = (char*) realloc(line, buffer_size);
         if (line == 0) quit();
       }
@@ -43,7 +50,7 @@ int repl(){
       
     }
     printf("parsing...\n");
-    printf("input was %s\n", line);
+    parse(line);
 
     if (strcmp(line, "quit") == 0){
       done = true;

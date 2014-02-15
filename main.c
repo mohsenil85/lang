@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include "parser.h"
+#include "repl.h"
 
 int main(){
-  parse();
+  repl();
   return 0;
 }
