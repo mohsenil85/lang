@@ -12,15 +12,15 @@ void quit(){
 }
 
 void header(){
-  printf("welcom\n quit to end\n");
+  printf("welcome to the repl\n^C to end\n");
 }
 
 int repl(){
   int input;
   bool done = false;
   int buffer_size = 64;
-  char* line = (char*) malloc(buffer_size);
-  if (line == 0) quit();
+  char* word = (char*) malloc(buffer_size);
+  if (word == 0) quit();
   
   header();
 
@@ -42,30 +42,33 @@ int repl(){
       //printf("top of loop 2...\n");
       int input = getchar();
       if (isspace(input) || input == EOF) {
-        line[i] = 0;
+        word[i] = 0;
         break;
       }
       //printf("now parsing this char:  %c\n", (char)input);
-      line[i] = input;
+      word[i] = input;
       if (i == buffer_size - 1){
         buffer_size = buffer_size + buffer_size;
         //printf("*****************buffer expanded!***************\n");
-        line = (char*) realloc(line, buffer_size);
-        if (line == 0) quit();
+        word = (char*) realloc(word, buffer_size);
+        if (word == 0) quit();
       }
       i++;
       
     }
+    printf("sending word %s to get parsed...\n", word);
     //printf("parsing...\n");
-    parse(line);
-
-    if (strcmp(line, "quit") == 0){
+    parse(word);
+/*
+    if (strcmp(word, "quit") == 0){
       done = true;
       break;
     }
 
+*/
   }//end big while
-  free(line);
+  free(word);
   return 0;
 
 }
+
