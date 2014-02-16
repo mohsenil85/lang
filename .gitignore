@@ -1,4 +1,5 @@
-*.o
+obj/*.o
+bin/*
 *.swp
 a.out
 main
