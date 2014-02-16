@@ -12,7 +12,13 @@ void quit(){
 }
 
 void header(){
-  printf("welcome to the repl\n^C to end\n");
+  printf("\n*****************************************************\n");
+  printf("\nwelcome to the repl\ntype 'quit' to end\n");
+}
+void tailer(){
+  printf("\n*****************************************************\n");
+  printf("bye!\n");
+  printf("\n");
 }
 
 int repl(){
@@ -27,6 +33,7 @@ int repl(){
   while(!done){ 
 
     //printf("starting...\n");
+    printf("\n>");
     while (true){
       //printf("top of loop...\n");
       input = getchar();
@@ -56,17 +63,16 @@ int repl(){
       i++;
       
     }
-    printf("sending word %s to get parsed...\n", word);
+    printf("\nsending word %s to get parsed...\n", word);
     //printf("parsing...\n");
     parse(word);
-/*
     if (strcmp(word, "quit") == 0){
       done = true;
       break;
     }
 
-*/
   }//end big while
+  tailer();
   free(word);
   return 0;
 
