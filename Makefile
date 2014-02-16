@@ -34,7 +34,7 @@ rm       = rm -f
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	@$(LINKER) $@ $(LFLAGS) $(OBJECTS)
-	echo "Linking complete!"
+	@echo "Linking complete!"
 
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
