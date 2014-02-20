@@ -33,7 +33,7 @@ int repl(){
   while(!done){ 
 
     //printf("starting...\n");
-    printf("\n>");
+    printf("\n>  ");
     while (true){
       //printf("top of loop...\n");
       input = getchar();
@@ -44,33 +44,7 @@ int repl(){
       }
     }
 
-    int i = 0;
-    while (true){
-      //printf("top of loop 2...\n");
-      int input = getchar();
-      if (isspace(input) || input == EOF) {
-        word[i] = 0;
-        break;
-      }
-      //printf("now parsing this char:  %c\n", (char)input);
-      word[i] = input;
-      if (i == buffer_size - 1){
-        buffer_size = buffer_size + buffer_size;
-        //printf("*****************buffer expanded!***************\n");
-        word = (char*) realloc(word, buffer_size);
-        if (word == 0) quit();
-      }
-      i++;
-      
-    }
-    printf("\nsending word %s to get parsed...\n", word);
-    //printf("parsing...\n");
-    parse(word);
-    if (strcmp(word, "quit") == 0){
-      done = true;
-      break;
-    }
-
+  parse(word);
   }//end big while
   tailer();
   free(word);
